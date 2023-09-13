@@ -1,10 +1,11 @@
 div {
     width: 90%;
-    padding: 10px;
+    padding: 5px;
     margin: auto;
 }
 
 .links {
+    text-align: right;
     float: right;
     background-color: red;
 }

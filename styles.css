@@ -1,14 +1,17 @@
 body {
-    background-color: red;
+    background-color: blue;
 }
 
 div {
     width: 90%;
     padding: 5px;
-    margin: auto; 
+    margin: auto;
 }
 
 .links {
+    width: 90%;
+    padding: 5px;
+    margin: auto;
     text-align: right;
     float: right;
 }

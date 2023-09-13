@@ -5,8 +5,6 @@ div {
 }
 
 .links {
-    padding: 10px;
-    margin: auto;
-    width: 90%;
     float: right;
+    background-color: red;
 }

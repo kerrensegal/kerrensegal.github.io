@@ -5,7 +5,5 @@
 }
 
 .links {
-    margin: auto;
-    width: 90%;
-    text-align: right;
+    float: right;
 }

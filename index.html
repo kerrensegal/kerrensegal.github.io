@@ -3,16 +3,23 @@
     <head>
         <title>Search</title>
         <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>
-            <a class="links" href=images.html>Image Search</a>
-            <a class="links" href=advanced.html>Advanced Search</a>
+        <div class="links">
+            <a href=advanced.html>Advanced Search</a>
+            <a href=images.html>Image Search</a>
         </div>
         <div>
+            <h1>Google</h1>
             <form action="https://google.com/search">
-                <input type="text" name="q">
-                <input type="submit" value="Google Search">
+                <div>
+                    <input id="searchbar" type="text" name="q">
+                </div>
+                <div class="searchoptions">
+                    <input class="searchbutton" type="submit" value="Google Search">
+                    <button class="searchbutton" href="https://google.com/maps">I'm Feeling Lucky</button>
+                </div>                
             </form>
         </div>
     </body>

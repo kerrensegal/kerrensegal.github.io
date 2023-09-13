@@ -1,17 +1,113 @@
 body {
-    background-color: blue;
+    background-color: white;
 }
 
 div {
-    width: 90%;
-    padding: 5px;
     margin: auto;
+    padding: 20px;
 }
 
-.links {
-    width: 90%;
+.links > a {
     padding: 5px;
-    margin: auto;
-    text-align: right;
     float: right;
+}
+
+h1 {
+    text-align: center;
+    font-size: 80px;
+    margin-top: 150px;
+    margin-bottom: 5px;
+    font-weight: normal;
+    font-family: Helvetica;
+}
+
+#searchbar {
+    display: block;
+    margin: 0 auto;
+    border-radius: 25px;
+    border: 0.5px solid;
+    width: 575px;
+    height: 20px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.searchoptions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchbutton {
+    display: box;
+    flex-wrap: wrap;
+    float: left;
+    text-align: center;
+    width: 120px;
+    padding: 5px;
+    margin: 10px;
+}
+
+h2 {
+    float: left;
+}
+
+h3 {
+    padding-bottom: 40px;
+    font-size: 25px;
+    font-weight: normal;
+    font-family: Arial;
+    color: red;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: normal;
+    font-family: Arial;
+}
+
+.container {
+    padding: 50px;
+}
+
+.section {
+    padding: 0px;
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: Arial;
+}
+
+.lines {
+    padding: 0px;
+}
+
+.lines > p {
+    padding-top: 10px;
+    margin-bottom: 33px;
+}
+
+.boxes > input {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 15px;
+    width: 600px;
+    margin-bottom: 30px;
+    padding: 6px;
+}
+
+.advancedbutton {
+    display: flex;
+    float: left;
+    width: 100%;
+    padding: 0px;
+}
+
+.advancedbutton > input {
+    color: white;
+    background-color: blue;
+    text-align: center;
+    width: 150px;
+    padding: 5px;
 }

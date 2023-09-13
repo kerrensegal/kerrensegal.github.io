@@ -3,15 +3,36 @@
     <head>
         <title>Advanced Search</title>
         <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>
+        <div class="links">
+            <h2>Google</h2>
             <a href=index.html>Google Search</a>
         </div>
-        <div>
-            <form action="https://google.com/advanced_search">
-                <input type="text" name="q">
-                <input type="submit" value="Advanced Search">
+        <div class="container">
+            <h3>Advanced Search</h3>
+            <h4>Find pages with...</h4>
+            <form action="https://google.com/search">
+                <div class="section">
+                    <div class="lines">
+                        <p>all these words:</p>
+                        <p>this exact word or phrase:</p>
+                        <p>any of these words:</p>
+                        <p>none of these words:</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="boxes">
+                        <input type="text" name="q">
+                        <input type="text" name="q">
+                        <input type="text" name="q">
+                        <input type="text" name="q">
+                    </div>
+                </div>
+                <div class="advancedbutton">
+                    <input type="submit" value="Advanced Search">
+                </div>
             </form>
         </div>
     </body>

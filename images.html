@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Image Search</title>
+        <title>Google Image Search</title>
         <link rel="stylesheet" href="styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>
+        <div class="links">
             <a href=index.html>Google Search</a>
         </div>
         <div>
-            <form action="https://google.com/imghp">
-                <input type="text" name="q">
-                <input type="submit" value="Image Search">
+            <h1><span class="blue">G</span><span class="red">o</span><span class="yellow">o</span><span class="blue">g</span><span class="green">l</span><span class="red">e</span><span class="images"> Images</span></h1>
+            <form action="https://google.com/search">
+                <div>
+                    <input id="searchbar" type="text" name="q">
+                </div>
+                <div class="searchbutton">
+                    <input type="submit" value="Image Search">
+                    <input type="hidden" name="tbm" value="isch">
+                </div>                
             </form>
         </div>
     </body>

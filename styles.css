@@ -1,7 +1,3 @@
-body {
-    background-color: white;
-}
-
 div {
     margin: auto;
     padding: 20px;
@@ -10,6 +6,7 @@ div {
 .links > a {
     padding: 5px;
     float: right;
+    font-family: Arial;
 }
 
 h1 {
@@ -19,6 +16,27 @@ h1 {
     margin-bottom: 5px;
     font-weight: normal;
     font-family: Helvetica;
+}
+
+.blue {
+    color: blue;
+}
+
+.red {
+    color: red;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.green {
+    color: green;
+}
+
+.images {
+    color: blue;
+    font-size: 30px;
 }
 
 #searchbar {
@@ -33,13 +51,13 @@ h1 {
     padding-right: 20px;
 }
 
-.searchoptions {
+.searchbutton {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.searchbutton {
+.searchbutton > input {
     display: box;
     flex-wrap: wrap;
     float: left;

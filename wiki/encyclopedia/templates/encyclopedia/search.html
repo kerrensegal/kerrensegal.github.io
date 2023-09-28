@@ -5,14 +5,13 @@
 {% endblock %}
 
 {% block body %}
-    {% if found_entries %}
+    {% if entry_list %}
         <ul>
-            {% for entry in found_entries %}
+            {% for entry in entry_list %}
                 <li><a href="{% url 'entry' title %}">{{ entry }}</a></li>
             {% endfor %}
         </ul>
-
     {% else %}
-        <h2></h2>
-
+        <h2>No results found for "{{ title }}"</h2>
+    {% endif %}
 {% endblock %}

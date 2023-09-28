@@ -26,8 +26,32 @@ def entry(request, title):
         "page": Markdown().convert(page)
     })
 
-# def search(request):
-#     query = request.GET.get("q", "")
+def search(request):
+    
+    # Gets user's search query
+    query = request.GET.get("q", "")
+
+    # Gets list of all existing entries
+    entries = util.list_entries()
+
+    # Establish a list for potential matches
+    entry_list = []
+
+    # Compares each entry to the search query
+    for entry in entries:
+        
+        # Checks for an exact match
+        if query.lower() == entry.lower():
+            return redirect("entry", title=query)
+        
+        # Checks for any matching substrings
+        elif query.lower() in entry.lower():
+            entry_list.append(entry)
+
+    return render(request, "encyclopedia/search.html", {
+        "title": query,
+        "entry_list": entry_list
+    })
 
 def new(request):
     

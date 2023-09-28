@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from . import util
-from django import forms, redirect
+from django import forms
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 from django.contrib import messages
 from markdown2 import Markdown
 from random import randint
@@ -8,7 +10,7 @@ from random import randint
 
 class NewEntryForm(forms.Form):
     title = forms.CharField(label="New Entry")
-    textarea = forms.CharField(label="Text")
+    textarea = forms.CharField(widget=forms.Textarea, label="Text")
 
 def index(request):
     return render(request, "encyclopedia/index.html", {"entries": util.list_entries()})
@@ -42,7 +44,7 @@ def search(request):
         
         # Checks for an exact match
         if query.lower() == entry.lower():
-            return redirect("entry", title=query)
+            return HttpResponseRedirect("entry", title=query)
         
         # Checks for any matching substrings
         elif query.lower() in entry.lower():
@@ -79,7 +81,7 @@ def new(request):
                     file.write(textarea)
 
                 # Redirects user to the new entry's page
-                return redirect("entry", title)    
+                return HttpResponseRedirect(reverse("entry", args=(title,)))
         
         # If form is invalid
         else:
@@ -107,11 +109,10 @@ def edit(request, entry):
             util.save_entry(title=title, textarea=textarea)
 
             # Redirects user to the entry's page
-            return redirect("entry", title)
+            return HttpResponseRedirect("entry", title)
         
     # Route reached via GET
-    title = entry
-    textarea = util.get_entry(title)
+    textarea = util.get_entry(entry)
     form = NewEntryForm({"title": title, "textarea": textarea})
     return render(request, "encyclopedia/edit.html", {
         "form": form,
@@ -124,7 +125,12 @@ def random(request):
     entries = util.list_entries()
 
     # Randomly select an entry
-    entry = entries[randint(0, len(entries) - 1)]
+    random = randint(0, len(entries) - 1)
+    title = entries[random]
+    page = util.get_entry(title)
 
-    # Redirect user to selected random entry's page
-    return redirect("entry", entry)
+    # Direct user to selected random entry's page
+    return render(request, "encyclopedia/entry.html", {
+        "title": title,
+        "page": Markdown().convert(page)
+    })

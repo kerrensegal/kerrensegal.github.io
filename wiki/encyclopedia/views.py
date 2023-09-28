@@ -3,6 +3,7 @@ from . import util
 from django import forms, redirect
 from django.contrib import messages
 from markdown2 import Markdown
+from random import randint
 
 
 class NewEntryForm(forms.Form):
@@ -93,5 +94,13 @@ def edit(request, entry):
         "title": title
     })
 
-# def random(request):
-    # ******* FINISH WRITING CODE *************
+def random(request):
+    
+    # Get list of all entries
+    entries = util.list_entries()
+
+    # Randomly select an entry
+    entry = entries[randint(0, len(entries) - 1)]
+
+    # Redirect user to selected random entry's page
+    return redirect("entry", entry)

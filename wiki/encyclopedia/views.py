@@ -9,8 +9,8 @@ from random import randint
 
 
 class NewEntryForm(forms.Form):
-    title = forms.CharField(label="New Entry")
-    textarea = forms.CharField(widget=forms.Textarea, label="Text")
+    title = forms.CharField(label="Page Title")
+    textarea = forms.CharField(widget=forms.Textarea, label="Page Content")
 
 def index(request):
     return render(request, "encyclopedia/index.html", {"entries": util.list_entries()})
@@ -19,7 +19,7 @@ def entry(request, title):
     
     # Check if requested entry title exists
     if title not in util.list_entries():
-        return render("error.html")
+        return render(request, "encyclopedia/error.html")
     
     # Render the entry's page content
     page = util.get_entry(title)
@@ -44,7 +44,7 @@ def search(request):
         
         # Checks for an exact match
         if query.lower() == entry.lower():
-            return HttpResponseRedirect("entry", title=query)
+            return HttpResponseRedirect(reverse("entry", args=(entry,)))
         
         # Checks for any matching substrings
         elif query.lower() in entry.lower():
@@ -58,7 +58,7 @@ def search(request):
 def new(request):
     
     # Route reached via POST
-    if request.method == "POST":        
+    if request.method == "POST":
         
         # Form to submit a new entry
         form = NewEntryForm(request.POST)
@@ -88,9 +88,9 @@ def new(request):
             return render(request, "encyclopedia/new.html", {"form": form})
 
     # Route reached via GET
-    return render(request, "encyclopedia/new.html", {"form": NewEntryForm()}) 
+    return render(request, "encyclopedia/new.html", {"form": NewEntryForm()})
     
-def edit(request, entry):
+def edit(request, title):
 
     # Route reached via POST
     if request.method == "POST":
@@ -106,13 +106,13 @@ def edit(request, entry):
             textarea = form.cleaned_data["textarea"]
 
             # Saves entry
-            util.save_entry(title=title, textarea=textarea)
+            util.save_entry(title=title, content=textarea)
 
             # Redirects user to the entry's page
-            return HttpResponseRedirect("entry", title)
+            return HttpResponseRedirect(reverse("entry", args=(title,)))
         
     # Route reached via GET
-    textarea = util.get_entry(entry)
+    textarea = util.get_entry(title)
     form = NewEntryForm({"title": title, "textarea": textarea})
     return render(request, "encyclopedia/edit.html", {
         "form": form,
